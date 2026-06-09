@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Passagens Documentadas — Neith</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Cormorant+Upright:wght@300;400;500&family=Raleway:wght@300;400&display=swap');
+
+  /* ── MODO CLARO (padrão) ── */
+  :root, [data-theme="light"] {
+    --bg:        #f5f0e8;
+    --bg2:       #ede6d8;
+    --accent:    #8b1a1a;
+    --accent-dim:#b05a5a;
+    --gold:      #7a5c1e;
+    --gold-dim:  #9a7a2e;
+    --text:      #1a1612;
+    --text-dim:  #5c5044;
+    --border:    rgba(139,26,26,0.15);
+    --rule:      #8b1a1a;
+    --toggle-bg: #1a1612;
+    --toggle-txt:#f5f0e8;
+  }
+
+  /* ── MODO ESCURO ── */
+  [data-theme="dark"] {
+    --bg:        #0e0d0b;
+    --bg2:       #161410;
+    --accent:    #c9a84c;
+    --accent-dim:#7a6128;
+    --gold:      #c9a84c;
+    --gold-dim:  #7a6128;
+    --text:      #e8e0cc;
+    --text-dim:  #9e9484;
+    --border:    rgba(201,168,76,0.18);
+    --rule:      #c9a84c;
+    --toggle-bg: #e8e0cc;
+    --toggle-txt:#0e0d0b;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'EB Garamond', Georgia, serif;
+    font-size: 1.08rem;
+    line-height: 1.8;
+    min-height: 100vh;
+    transition: background 0.3s, color 0.3s;
+  }
+
+  /* ── faixa superior ── */
+  .top-rule {
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--rule), transparent);
+  }
+
+  /* ── toggle tema ── */
+  .theme-toggle {
+    position: fixed;
+    top: 1rem;
+    right: 1.2rem;
+    background: var(--toggle-bg);
+    color: var(--toggle-txt);
+    border: none;
+    padding: 0.35rem 0.85rem;
+    font-family: 'Raleway', sans-serif;
+    font-size: 0.62rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: 2px;
+    z-index: 100;
+    transition: background 0.3s, color 0.3s;
+  }
+
+  /* ── header ── */
+  header {
+    text-align: center;
+    padding: 4rem 2rem 2.5rem;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+  }
+
+  .eyebrow {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 300;
+    font-size: 0.72rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--gold-dim);
+    margin-bottom: 1.1rem;
+  }
+
+  header h1 {
+    font-family: 'Cormorant Upright', serif;
+    font-weight: 300;
+    font-size: clamp(2.2rem, 5vw, 3.6rem);
+    color: var(--accent);
+    letter-spacing: 0.05em;
+    line-height: 1.1;
+    margin-bottom: 0.5rem;
+  }
+
+  .subtitle {
+    font-style: italic;
+    color: var(--text-dim);
+    font-size: 1rem;
+    margin-top: 0.8rem;
+  }
+
+  .ornament {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.2rem;
+    margin: 1.8rem 0 0;
+    color: var(--accent-dim);
+    font-size: 1.5rem;
+    letter-spacing: 0.3em;
+  }
+
+  /* ── layout ── */
+  main {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 0 1.5rem 6rem;
+  }
+
+  .source-block {
+    margin-top: 4rem;
+  }
+
+  .source-label {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 300;
+    font-size: 0.68rem;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: var(--gold-dim);
+    margin-bottom: 0.5rem;
+  }
+
+  .source-title {
+    font-family: 'Cormorant Upright', serif;
+    font-weight: 400;
+    font-size: 1.4rem;
+    color: var(--accent);
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 0.6rem;
+    margin-bottom: 1.8rem;
+  }
+
+  /* ── passage ── */
+  .passage {
+    background: var(--bg2);
+    border-left: 2px solid var(--accent-dim);
+    padding: 1.5rem 1.8rem;
+    margin-bottom: 1.6rem;
+    border-radius: 0 2px 2px 0;
+  }
+
+  .passage-title {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 400;
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold-dim);
+    margin-bottom: 0.9rem;
+  }
+
+  .passage p {
+    font-style: italic;
+    color: var(--text);
+    font-size: 1.08rem;
+    line-height: 1.85;
+  }
+
+  .passage p + p {
+    margin-top: 0.8rem;
+  }
+
+  em.epithet {
+    font-style: normal;
+    color: var(--accent);
+  }
+
+  /* ── commentary ── */
+  .commentary {
+    color: var(--text-dim);
+    font-size: 0.93rem;
+    line-height: 1.7;
+    margin-top: 0.9rem;
+    padding-left: 0.5rem;
+    border-left: 1px solid var(--border);
+  }
+
+  /* ── divisores temáticos ── */
+  .thematic-header {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    margin-top: 5rem;
+    margin-bottom: 0.3rem;
+  }
+
+  .thematic-header::before,
+  .thematic-header::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  .thematic-header span {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 300;
+    font-size: 0.65rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold-dim);
+    white-space: nowrap;
+  }
+
+  /* ── nota de fontes ── */
+  .fonte-nota {
+    margin-top: 5rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+    color: var(--text-dim);
+    font-size: 0.85rem;
+    line-height: 1.7;
+  }
+
+  .fonte-nota h3 {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 400;
+    font-size: 0.7rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold-dim);
+    margin-bottom: 0.8rem;
+  }
+
+  .fonte-nota ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .fonte-nota li {
+    padding-left: 1.2rem;
+    position: relative;
+    margin-bottom: 0.4rem;
+  }
+
+  .fonte-nota li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--accent-dim);
+  }
+</style>
+</head>
+<body>
+
+<button class="theme-toggle" onclick="toggleTheme()" aria-label="Alternar tema">Noturno</button>
+
+<div class="top-rule"></div>
+
+<header>
+  <p class="eyebrow">Corpus Devocional</p>
+  <h1>Neith, a Grande</h1>
+  <p class="subtitle">Passagens documentadas de hinos, litanias e inscrições antigas</p>
+  <div class="ornament">⊕ &nbsp; ✦ &nbsp; ⊕</div>
+</header>
+
+<main>
+
+  <!-- ═══ I ═══ -->
+  <div class="thematic-header"><span>I — Cosmogonia e Natureza Primordial</span></div>
+
+  <div class="source-block">
+    <p class="source-label">Fonte</p>
+    <p class="source-title">Templo de Iunyt / Esna — Ritual do Nascimento de Neith (Esna 204–213, col. II)</p>
+
+    <div class="passage">
+      <p class="passage-title">O Deus Único Que Se Tornou Dois</p>
+      <p>
+        "<em class="epithet">O pai dos pais, a mãe das mães, deus único que se tornou dois</em>:
+        ela estava dentro das águas do Nun, das quais as águas saíram de seu próprio corpo,
+        enquanto a terra ainda estava em completa escuridão
+        e Tatenen ainda não havia surgido — ele que faz as margens crescerem com plantas."
+      </p>
+    </div>
+    <p class="commentary">
+      Este texto inaugura o ritual anual do nascimento de Neith em Esna, celebrado no dia 13 do terceiro mês do verão (Epiphi 13). A fórmula "pai dos pais, mãe das mães" é a mais característica de Neith no corpus de Esna — ela designa uma divindade que precede e contém a própria distinção de gênero.
+    </p>
+
+    <div class="passage">
+      <p class="passage-title">Aclamação dos Deuses</p>
+      <p>
+        "Façam uma luz diante de Neith neste dia!
+        Vinde, regozijai-vos por ela neste dia de bem,
+        pois ela separou para nós a aurora brilhante da noite,
+        criou para nós um chão sobre o qual podemos nos apoiar,
+        separou para nós a noite do dia."
+      </p>
+    </div>
+    <p class="commentary">
+      Fala de Rá dirigindo-se aos deuses reunidos. A criação por separação (aurora da noite, dia da noite, terra das águas) é o modo próprio da demiurgia de Neith: ela não cria a partir do nada, mas articula o que estava confuso no Nun.
+    </p>
+  </div>
+
+  <div class="source-block">
+    <p class="source-label">Fonte</p>
+    <p class="source-title">Anta Norte do Templo de Esna (Esna II, 71–76)</p>
+
+    <div class="passage">
+      <p class="passage-title">Palavras de Neith</p>
+      <p>
+        "Palavras ditas por <em class="epithet">Neith, a Grande, Mãe de Deus, Senhora de Esna,
+        Pai dos pais, Mãe das mães</em> — que é Tatenen,
+        que surgiu no princípio, a serpente primordial que criou tudo.
+        Que é também Nun e as águas-N.t."
+      </p>
+      <p>
+        "A mãe-chefe, que existe desde o Primordial,
+        que preenche o céu e a terra com sua perfeição.
+        Dou-vos a Terra Amada [Egito] em sua totalidade, em celebração."
+      </p>
+    </div>
+    <p class="commentary">
+      Raro caso em que Neith fala na primeira pessoa. Ela se identifica com Tatenen (o chão primordial que emerge das águas) e com o próprio Nun — é simultaneamente o abismo e o que nele está contido.
+    </p>
+  </div>
+
+  <!-- ═══ II ═══ -->
+  <div class="thematic-header"><span>II — A Palavra Criadora e a Tecelagem</span></div>
+
+  <div class="source-block">
+    <p class="source-label">Fonte</p>
+    <p class="source-title">Hino a Neith — Esna, vol. 5, p. 256–257 (ed. Sauneron)</p>
+
+    <div class="passage">
+      <p class="passage-title">A Potência da Palavra</p>
+      <p>"Tudo o que seu coração concebeu foi realizado imediatamente."</p>
+      <p>"<em class="epithet">Ela criou os trinta deuses pronunciando seus nomes, um por um.</em>"</p>
+      <p>
+        "Sua obra de cosmogênese se realizou em oito horas
+        que passaram 'no espaço de um instante',
+        por meio de quatro discursos ou fórmulas [<em>akhu</em>]
+        que incorporam os estágios iniciais da criação
+        e dos quais pode se desdobrar todo o curso futuro dos acontecimentos."
+      </p>
+    </div>
+    <p class="commentary">
+      A criação por nomeação é o coração da teologia de Neith em Esna: a palavra pronunciada não descreve — produz. Os quatro akhu correspondem possivelmente às quatro orientações cósmicas, e o intervalo de oito horas remete à Ogdóada de Hermópolis, com a qual Neith mantém relação profunda.
+    </p>
+
+    <div class="passage">
+      <p class="passage-title">O Tear e o Cosmos</p>
+      <p>
+        "A Deusa que dividiu o pente de seu tear
+        [alternadamente: 'os fios de sua trama']
+        entre os cinco que habitam o céu e a terra."
+      </p>
+    </div>
+    <p class="commentary">
+      A imagem do tear como instrumento cosmogônico está presente desde as fontes mais antigas. Neith tece o mundo, distribuindo a estrutura entre os domínios do real.
+    </p>
+  </div>
+
+  <div class="source-block">
+    <p class="source-label">Fonte</p>
+    <p class="source-title">Hino, Esna vol. 5, p. 111 (ed. Sauneron)</p>
+
+    <div class="passage">
+      <p class="passage-title">A Forma da Eternidade</p>
+      <p>
+        "Em sua forma de Deusa que alcança os limites do universo,
+        em sua forma material da superfície líquida,
+        <em class="epithet">em seu nome de duração ilimitada</em>."
+      </p>
+      <p>
+        "A extensão das águas que faz a eternidade [<em>heh</em>];
+        a corrente que forja a permanência [<em>djet</em>]."
+      </p>
+      <p>
+        "Tu és a Senhora de Sais, que é o Monte Primordial,
+        do qual <em class="epithet">dois terços são masculinos e um terço é feminino</em>."
+      </p>
+    </div>
+    <p class="commentary">
+      As duas palavras egípcias para eternidade — heh (duração cíclica) e djet (permanência linear) — são aqui identificadas com o fluxo do tempo que Neith personifica. A proporção 2/3 masculino / 1/3 feminino é a única expressão conhecida no corpus egípcio de uma divindade androginamente assimétrica.
+    </p>
+  </div>
+
+  <!-- ═══ III ═══ -->
+  <div class="thematic-header"><span>III — Litania Diária e Epítetos Rituais</span></div>
+
+  <div class="source-block">
+    <p class="source-label">Fonte</p>
+    <p class="source-title">Litania Diária de Neith — Esna III, col. 3 (214–221)</p>
+
+    <div class="passage">
+      <p class="passage-title">Fórmula de Abertura</p>
+      <p>
+        "Realizando a litania de Neith neste dia, como todos os dias.
+        Palavras ditas:
+        Oferenda a <em class="epithet">Neith, a Grande, Mãe de Deus, Senhora de Esna</em>,
+        em todos os seus nomes,
+        além da vida, prosperidade e saúde."
+      </p>
+    </div>
+    <p class="commentary">
+      A expressão "em todos os seus nomes" é teologicamente significativa: reconhece que a divindade excede qualquer nomeação singular.
+    </p>
+
+    <div class="passage">
+      <p class="passage-title">Dos Epítetos da Litania e da Procissão</p>
+      <p>"<em class="epithet">Para Neith em todo lugar que seu Ka deseja estar.</em>"</p>
+      <p>
+        "Ei, ei! à sua chegada. Neith, a Grande, Mãe de Deus, Senhora de Esna.
+        Esta deusa aparece em procissão com sua Enéada;
+        repousando em seu grande trono;
+        iluminando inúmeras tochas dentro deste templo;
+        celebrando a festa, por homens e mulheres;
+        realizando a jubilação em toda a cidade,
+        sem que nenhuma pessoa durma até o amanhecer."
+      </p>
+    </div>
+  </div>
+
+  <div class="source-block">
+    <p class="source-label">Fonte</p>
+    <p class="source-title">Hino, Esna 252–253 (col. VII, v. 111) — ed. Sauneron</p>
+
+    <div class="passage">
+      <p class="passage-title">Da Natureza Primordial</p>
+      <p>
+        "Tu és a Senhora de Sais, que é o Monte Primordial.
+        <em class="epithet">Deusa Primordial, Misteriosa e Grande,
+        Ela Que começou a ser no Começo,
+        e Que inicia todas as coisas.</em>
+      </p>
+      <p>
+        Tu és a Abóbada Celestial na qual nasceram todas as estrelas,
+        que as ergueu em seus sacrários;
+        Ela Que queima a Terra com a Chama de Seus Olhos,
+        com o calor que sai de Sua boca.
+      </p>
+      <p>
+        Ela é a Mãe de Rá, que brilha no Horizonte,
+        <em class="epithet">Ela é a Misteriosa que irradia com Sua própria luz.</em>
+        Tu és a Deusa-Serpente Primordial surgida antes de Todas as demais,
+        Ela Que protege toda a terra,
+        Ela Que começou a ser antes do vir-a-ser daqueles que tinham de ser."
+      </p>
+    </div>
+  </div>
+
+  <!-- ═══ IV ═══ -->
+  <div class="thematic-header"><span>IV — Árbitro do Cosmos e Protetora</span></div>
+
+  <div class="source-block">
+    <p class="source-label">Fonte</p>
+    <p class="source-title">Contendas de Hórus e Seth (Papiro Chester Beatty I) — trad. Lichtheim</p>
+
+    <div class="passage">
+      <p class="passage-title">A Carta a Neith</p>
+      <p>
+        "A <em class="epithet">Neith, a Grande, a mãe divina,
+        que brilhou sobre o primeiro rosto,
+        que está viva, íntegra e jovem</em>."
+      </p>
+      <p>
+        [Neith responde em carta própria:]
+        "Dai o ofício de Osíris a seu filho Hórus."
+      </p>
+    </div>
+    <p class="commentary">
+      Neith é o único ser cuja autoridade os deuses reunidos aceitam como superior à sua própria deliberação. Ela não aparece — escreve. Essa distância é teologicamente significativa: indica uma divindade que opera em um plano mais primordial do que o panteão ordinário.
+    </p>
+  </div>
+
+  <div class="source-block">
+    <p class="source-label">Fonte</p>
+    <p class="source-title">Inscrições do Templo de Sais (fragmentos preservados)</p>
+
+    <div class="passage">
+      <p class="passage-title">Dos Epítetos de Sais</p>
+      <p>
+        "<em class="epithet">Neith, a Grande, a Mãe Divina,
+        Senhora do país de Esna,
+        a grande Vaca, criadora de Rá</em>,
+        cujo nome é maior do que o de todos os deuses e deusas.
+        Tudo pertence a ela; a vida e a morte."
+      </p>
+    </div>
+  </div>
+
+  <div class="source-block">
+    <p class="source-label">Fonte</p>
+    <p class="source-title">Textos das Pirâmides e Tradição Funerária</p>
+
+    <div class="passage">
+      <p class="passage-title">Neith como Protetora — Textos das Pirâmides, Enunciado 362</p>
+      <p>
+        Neith figura entre as quatro deusas — com Ísis, Néftis e Serqet —
+        como <em class="epithet">"protetoras do trono"</em>,
+        guardiãs do sarcófago e dos recipientes das vísceras do defunto.
+      </p>
+    </div>
+
+    <div class="passage">
+      <p class="passage-title">Da Função Funerária</p>
+      <p>"Tu és a senhora do óleo de unção e também do tecido."</p>
+    </div>
+    <p class="commentary">
+      O linho com que Neith envolve Osíris é simultaneamente proteção e continuação de sua atividade tecelã primordial: o morto, como o cosmos, é tecido pela Deusa.
+    </p>
+  </div>
+
+  <!-- ═══ V ═══ -->
+  <div class="thematic-header"><span>V — Palavras da Própria Deusa</span></div>
+
+  <div class="source-block">
+    <p class="source-label">Fonte</p>
+    <p class="source-title">Tumba de Nefertari — Vale das Rainhas, QV66</p>
+
+    <div class="passage">
+      <p class="passage-title">Neith Fala à Rainha</p>
+      <p>
+        "Vim diante de ti, Grande Esposa Real,
+        Senhora das Duas Terras, Senhora do Alto e do Baixo Egito,
+        Nefertari, Amada de Mut,
+        cuja palavra é verdadeira e reta diante de Osíris
+        que habita no Amenti [o Oeste, o Mundo dos Mortos]."
+      </p>
+      <p>
+        "<em class="epithet">Concedi-te um lugar dentro do Duat,
+        para que possas aparecer gloriosamente no Céu como Rá.</em>"
+      </p>
+    </div>
+    <p class="commentary">
+      Um dos raros casos em que Neith fala diretamente a uma mortal. A promessa de que o defunto "aparecerá como Rá" é a mais alta honra na escatologia egípcia — e vem da boca de Neith, que é a própria mãe de Rá.
+    </p>
+  </div>
+
+  <!-- Nota de fontes -->
+  <div class="fonte-nota">
+    <h3>Referências e Fontes Primárias</h3>
+    <ul>
+      <li>Sauneron, S. (1959–1975). <em>Esna</em>, vols. I–VII. IFAO, Cairo.</li>
+      <li>el-Sayed, R. (1982). <em>La déesse Neith de Saïs</em>. IFAO, Cairo.</li>
+      <li>Lichtheim, M. (1973–1980). <em>Ancient Egyptian Literature</em>, 3 vols. University of California Press.</li>
+      <li>Butler, E.P. (2009/2015). "Neith." In <em>Henadology: Philosophy and Theology</em>.</li>
+      <li>Projeto de tradução colaborativa de Esna: bookdown.org/shemanefer (Esna II e III).</li>
+      <li>Faulkner, R.O. (1969). <em>The Ancient Egyptian Pyramid Texts</em>. Oxford.</li>
+    </ul>
+  </div>
+
+</main>
+
+<script>
+  function toggleTheme() {
+    const html = document.documentElement;
+    const btn = document.querySelector('.theme-toggle');
+    if (html.dataset.theme === 'light') {
+      html.dataset.theme = 'dark';
+      btn.textContent = 'Diurno';
+    } else {
+      html.dataset.theme = 'light';
+      btn.textContent = 'Noturno';
+    }
+  }
+</script>
+
+</body>
+</html>
