@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Águas de Nun — Abertura e Encerramento Kemético · Coven Sangue Tinto</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #f5f0e8;
+    --bg-alt: #ece2d2;
+    --text: #1a1612;
+    --text-soft: #5a4c3f;
+    --accent: #8b1a1a;
+    --gold: #9a7a2e;
+    --border: rgba(139,26,26,0.15);
+    --ritual-bg: rgba(139,26,26,0.045);
+    --ritual-border: #8b1a1a;
+  }
+
+  [data-theme="dark"] {
+    --bg: #0e0d0b;
+    --bg-alt: #1a1714;
+    --text: #e8ded0;
+    --text-soft: #b3a690;
+    --accent: #c2564a;
+    --gold: #c9a84c;
+    --border: rgba(201,168,76,0.18);
+    --ritual-bg: rgba(201,168,76,0.05);
+    --ritual-border: #c9a84c;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem;
+    line-height: 1.75;
+    transition: background 0.4s ease, color 0.4s ease;
+  }
+
+  .page {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 5rem 1.6rem 6rem;
+  }
+
+  h1, h2, h3 {
+    font-family: 'Cinzel', serif;
+    font-weight: 600;
+  }
+
+  h1 {
+    font-size: 2.4rem;
+    text-align: center;
+    color: var(--accent);
+    letter-spacing: 0.06em;
+  }
+
+  h2 {
+    font-size: 1.05rem;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 0.5rem;
+    margin: 3.5rem 0 1.4rem;
+  }
+
+  h3 {
+    font-size: 1.3rem;
+    color: var(--gold);
+    font-style: italic;
+    font-weight: 500;
+    margin: 2.2rem 0 0.6rem;
+    letter-spacing: 0.02em;
+  }
+
+  p { margin: 0.9rem 0; }
+
+  .eyebrow {
+    text-align: center;
+    color: var(--gold);
+    font-family: 'Cinzel', serif;
+    letter-spacing: 0.3em;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    margin-bottom: 1.2rem;
+  }
+
+  .subtitle {
+    text-align: center;
+    font-style: italic;
+    color: var(--text-soft);
+    font-size: 1.15rem;
+    max-width: 38ch;
+    margin: 0.8rem auto 0;
+  }
+
+  .glyph-divider {
+    text-align: center;
+    color: var(--gold);
+    font-size: 1.3rem;
+    letter-spacing: 0.6em;
+    margin: 2.4rem 0;
+    opacity: 0.85;
+  }
+
+  .parte-label {
+    font-family: 'Cinzel', serif;
+    color: var(--gold);
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    text-align: center;
+    margin-top: 4.5rem;
+  }
+
+  .rubrica {
+    font-style: italic;
+    color: var(--text-soft);
+  }
+
+  .palavras {
+    font-style: italic;
+    font-size: 1.18rem;
+    background: var(--ritual-bg);
+    border-left: 3px solid var(--ritual-border);
+    padding: 1.1rem 1.5rem;
+    margin: 1.1rem 0;
+    color: var(--text);
+  }
+
+  .passo {
+    margin-bottom: 1.5rem;
+  }
+
+  .fundamentos p, .notas p {
+    color: var(--text-soft);
+  }
+  .fundamentos strong, .notas strong {
+    color: var(--text);
+    font-weight: 600;
+  }
+
+  .materiais-list {
+    list-style: none;
+    padding: 0;
+  }
+  .materiais-list li {
+    position: relative;
+    padding: 0.35rem 0 0.35rem 1.6rem;
+    color: var(--text-soft);
+  }
+  .materiais-list li::before {
+    content: "☥";
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-size: 0.95em;
+  }
+  .materiais-list strong { color: var(--text); }
+
+  .corpo-divider {
+    text-align: center;
+    margin: 4rem 0;
+    padding: 2.2rem 1.5rem;
+    border: 1px dashed var(--border);
+    border-radius: 6px;
+  }
+  .corpo-divider .label {
+    font-family: 'Cinzel', serif;
+    color: var(--gold);
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+  }
+  .corpo-divider p {
+    margin-top: 0.9rem;
+    color: var(--text-soft);
+    font-style: italic;
+    font-size: 1.05rem;
+  }
+
+  .resumo ol {
+    padding-left: 1.5rem;
+    color: var(--text-soft);
+  }
+  .resumo li {
+    margin-bottom: 0.7rem;
+  }
+  .resumo li strong { color: var(--text); }
+  .resumo .sep {
+    text-align: center;
+    color: var(--gold);
+    font-style: italic;
+    margin: 1rem 0;
+    letter-spacing: 0.2em;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+  }
+
+  footer {
+    text-align: center;
+    margin-top: 5rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+    color: var(--text-soft);
+    font-family: 'Cinzel', serif;
+    letter-spacing: 0.25em;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+  }
+
+  .theme-toggle {
+    position: fixed;
+    top: 1.2rem;
+    right: 1.2rem;
+    background: var(--bg-alt);
+    border: 1px solid var(--border);
+    color: var(--text);
+    font-family: 'Cinzel', serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 0.55rem 1.1rem;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: border-color 0.3s ease, color 0.3s ease;
+    z-index: 10;
+  }
+  .theme-toggle:hover { border-color: var(--gold); color: var(--gold); }
+  .theme-toggle:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+
+  [data-theme="light"] .label-noturno { display: none; }
+  [data-theme="dark"] .label-diurno { display: none; }
+
+  @media (max-width: 600px) {
+    body { font-size: 1.05rem; }
+    h1 { font-size: 1.9rem; }
+    .page { padding: 4.5rem 1.1rem 4rem; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; scroll-behavior: auto !important; }
+  }
+</style>
+</head>
+<body>
+<button class="theme-toggle" id="theme-toggle" aria-label="Alternar tema claro/escuro">
+  <span class="label-noturno">Diurno</span><span class="label-diurno">Noturno</span>
+</button>
+
+<div class="page">
+
+  <header>
+    <div class="eyebrow">✦ Liturgia · Coven Sangue Tinto ✦</div>
+    <h1>Águas de Nun</h1>
+    <p class="subtitle">Abertura e encerramento para ritos exclusivamente kemétykos — purificação, anúncio, reversão e selamento</p>
+    <div class="glyph-divider">☥</div>
+  </header>
+
+  <section class="fundamentos">
+    <h2>Fundamentos</h2>
+    <p>No rito misto, a água lustral consagrada a Héstia ancora o espaço a partir de um centro fixo — o lar, o ponto de onde tudo se organiza. No rito puramente kemético, esse ancoramento não vem de uma divindade do lar, mas da própria cosmogonia: <strong>Nun</strong>, as águas primordiais, sem margens, sem luz, sem distinção entre dentro e fora — anteriores até aos próprios deuses. Consagrar a água a Nun não é "limpar" no sentido profano: é devolver a água, por um instante, ao estado anterior a toda forma, para que dali se possa começar de novo.</p>
+    <p>A sequência abaixo segue, em linhas gerais, a lógica preservada no ritual diário de templo — atestado principalmente no <strong>Papiro Berlim 3055</strong> (culto de Amon-Rá, Karnak) e estudado classicamente por Alexandre Moret (<em>Le Rituel du culte divin journalier en Égypte</em>, 1902): purificação com água e natrão, incensação, anúncio diante do deus e, no encerramento, reversão das oferendas e apagamento dos rastros do oficiante.</p>
+    <p>Não é uma reconstrução arqueológica fiel — o ritual de templo era performado por um corpo sacerdotal inteiro, diante de uma estátua de culto, em arquitetura específica. É uma adaptação para a prática devocional individual, preservando o espírito e a lógica sequencial: <strong>purificar, anunciar, trabalhar, devolver, apagar, selar.</strong></p>
+    <p>Importante: isto não deve ser confundido com a <strong>Abertura da Boca</strong> (wpt-r) — rito distinto, de consagração de imagens e estátuas, e não de abertura de culto cotidiano.</p>
+  </section>
+
+  <section class="materiais">
+    <h2>Materiais</h2>
+    <ul class="materiais-list">
+      <li><strong>Um vaso ou tigela com água</strong>, ainda não consagrada</li>
+      <li><strong>Natrão</strong> — ou, na ausência, sal marinho grosso. A composição química não é idêntica, mas a função simbólica de "sal das águas primordiais" se mantém; é uma substituição ritual aceitável</li>
+      <li><strong>Incenso</strong> — kyphi, mirra, olíbano ou outra resina de sua preferência</li>
+      <li><strong>Um instrumento de varredura</strong> — uma pena, um pequeno feixe, uma vassoura miniatura, ou simplesmente a mão direita</li>
+      <li><strong>Vela ou lamparina</strong> (opcional, recomendada para o selamento)</li>
+      <li><strong>As oferendas</strong> que serão revertidas ao final — água, comida, bebida ou incenso; algo tangível</li>
+    </ul>
+  </section>
+
+  <div class="parte-label">Parte I</div>
+  <h2 style="text-align:center; border-bottom:none; margin-top:0.5rem;">Abertura do Rito</h2>
+
+  <article class="passo">
+    <h3>1. Consagração da Água de Nun</h3>
+    <p class="rubrica">Sentado diante do vaso ainda não consagrado, dissolva o natrão (ou sal) na água, lentamente, enquanto fala:</p>
+    <blockquote class="palavras">
+      "Antes do templo, antes do nome, antes da primeira margem — havia Nun. Das suas águas sem fundo e sem face nasceu o primeiro outeiro, e sobre ele o primeiro sopro. A vós, águas sem forma, eu chamo a este vaso." <em>(dissolva o natrão)</em> "Que esta água seja Nun: não o que é, mas o que pode ser; não a criação, mas o que a antecede. Eu vos consagro."
+    </blockquote>
+    <p class="rubrica">Pause um momento, sentindo a água como potência indiferenciada — anterior, inclusive, à distinção entre puro e impuro.</p>
+  </article>
+
+  <article class="passo">
+    <h3>2. Purificação — Wab</h3>
+    <p class="rubrica">Molhe as pontas dos dedos da mão direita na água de Nun. Toque a testa, depois as mãos e, se desejar, aspirja levemente os limites do espaço ritual. A cada toque, repita em voz baixa:</p>
+    <blockquote class="palavras">"Wab sep-sen — puro, puro."</blockquote>
+    <p class="rubrica">Repita a fórmula quantas vezes fizer sentido (tradicionalmente, em múltiplos de dois ou quatro). Ao final, declare:</p>
+    <blockquote class="palavras">"Eu sou puro com a pureza de Nun. O que é impuro não atravessa esta água comigo."</blockquote>
+  </article>
+
+  <article class="passo">
+    <h3>3. Incensação — Senetjer</h3>
+    <p class="rubrica">Acenda o incenso. Deixe a fumaça circular por você e pelo espaço — sobre as mãos, diante do rosto, ao redor do altar. Enquanto isso, diga:</p>
+    <blockquote class="palavras">"Senetjer — que isto torne divino o que toca. Que a fumaça suba como sobe o Ba, e que, por onde passar, o espaço comum se torne espaço dos Neteru."</blockquote>
+  </article>
+
+  <article class="passo">
+    <h3>4. Anúncio e Despertar</h3>
+    <p class="rubrica">Voltando-se para o(s) Neter(u) que serão trabalhados neste rito, fale — adaptando o nome conforme o caso:</p>
+    <blockquote class="palavras">"Desperta em paz, [Nome do Neter/Netjeret]. Eu venho diante de vós purificado pelas águas de Nun e pelo perfume de Senetjer. Eu sou [seu nome ritual], de mãos limpas e coração inteiro. Que as portas se abram para o que se segue."</blockquote>
+    <p class="rubrica">Aqui termina a abertura.</p>
+  </article>
+
+  <div class="corpo-divider">
+    <div class="label">✦ O Corpo do Rito ✦</div>
+    <p>Invocações específicas, oferendas e trabalho mágico deste culto acontecem agora.</p>
+  </div>
+
+  <div class="parte-label">Parte II</div>
+  <h2 style="text-align:center; border-bottom:none; margin-top:0.5rem;">Encerramento do Rito</h2>
+
+  <article class="passo">
+    <h3>1. Reversão das Oferendas — Wedjeb-iru</h3>
+    <p class="rubrica">Diante das oferendas apresentadas durante o rito, fale:</p>
+    <blockquote class="palavras">"O que foi oferecido foi recebido — não porque o Neter precise, mas porque o gesto importa. Agora, [Nome do Neter], o que veio de vós retorna: a mim, à terra, à água. Nada se perde no círculo dos deuses; tudo o que circula, retorna."</blockquote>
+    <p class="rubrica">Consuma o que for apropriado (alimento, bebida), ou devolva à terra/água o restante. Este gesto fecha o circuito da oferenda — o que foi dado não permanece "preso" diante do altar indefinidamente.</p>
+  </article>
+
+  <article class="passo">
+    <h3>2. Varredura de Tot</h3>
+    <p class="rubrica">Com a mão direita, uma pena ou uma pequena vassoura, faça um gesto de varrer — do centro do espaço ritual para fora, ou do altar em direção ao limite do espaço. Enquanto faz isso, diga:</p>
+    <blockquote class="palavras">"Com os dois dedos de Tot, se apaguem os rastros deste rito. Que nenhuma sombra me siga para fora, e que nada impuro entre pelo caminho que deixo livre. Tot, senhor da palavra justa, guarda o que foi dito aqui."</blockquote>
+    <p class="rubrica">Este gesto não é sobre culpa ou "sujeira" moral — é sobre fechar a passagem entre o espaço ritual e o espaço comum, para que um não vaze descontroladamente no outro.</p>
+  </article>
+
+  <article class="passo">
+    <h3>3. Selamento Final</h3>
+    <p class="rubrica">Se houver vela ou lamparina aceso, apague-o. Faça uma última passagem de incenso, ou simplesmente respire profundamente diante do espaço. Diga:</p>
+    <blockquote class="palavras">"O rito está completo. Que a calma de Nun permaneça nestas águas, e que Maat permaneça neste espaço até que eu retorne. Está selado."</blockquote>
+  </article>
+
+  <section class="resumo">
+    <h2>Roteiro Rápido</h2>
+    <ol>
+      <li><strong>Consagração da Água de Nun</strong> — dissolver natrão/sal, palavras de consagração</li>
+      <li><strong>Purificação (Wab)</strong> — tocar testa e mãos com a água, "wab sep-sen"</li>
+      <li><strong>Incensação (Senetjer)</strong> — acender incenso, circular a fumaça</li>
+      <li><strong>Anúncio e Despertar</strong> — saudar o Neter, declarar pureza e presença</li>
+    </ol>
+    <div class="sep">— corpo do rito —</div>
+    <ol start="5">
+      <li><strong>Reversão das Oferendas (Wedjeb-iru)</strong> — consumir/devolver o que foi oferecido</li>
+      <li><strong>Varredura de Tot</strong> — gesto de varrer, apagar rastros</li>
+      <li><strong>Selamento Final</strong> — apagar a chama, palavras finais</li>
+    </ol>
+  </section>
+
+  <section class="notas">
+    <h2>Notas</h2>
+    <p>As fórmulas acima são composições originais, inspiradas na lógica e nos elementos do ritual diário de templo (purificação, censo, anúncio, reversão, apagamento de rastros), não traduções de textos rituais específicos. Adapte a linguagem, os nomes e os gestos conforme o trabalho e a divindade em questão — a estrutura é o que importa, não a fórmula fixa.</p>
+  </section>
+
+  <footer>Coven Sangue Tinto</footer>
+
+</div>
+
+<script>
+  (function () {
+    var root = document.documentElement;
+    var toggle = document.getElementById('theme-toggle');
+    var saved = localStorage.getItem('sangue-tinto-theme');
+    if (saved === 'dark' || saved === 'light') {
+      root.setAttribute('data-theme', saved);
+    }
+    toggle.addEventListener('click', function () {
+      var current = root.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+      var next = current === 'dark' ? 'light' : 'dark';
+      root.setAttribute('data-theme', next);
+      localStorage.setItem('sangue-tinto-theme', next);
+    });
+  })();
+</script>
+</body>
+</html>
