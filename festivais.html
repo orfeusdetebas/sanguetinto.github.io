@@ -1,0 +1,140 @@
+
+<style>
+  :root {
+    --parchment: #f5f0e8;
+    --ink: #1a1612;
+    --wine: #8b1a1a;
+    --gold: #9a7a2e;
+    --border: rgba(139,26,26,0.15);
+  }
+  body { background: transparent; margin: 0; padding: 0; }
+  .wrapper {
+    font-family: Georgia, 'Times New Roman', serif;
+    color: var(--ink);
+    background: var(--parchment);
+    border-radius: 12px;
+    border: 0.5px solid var(--border);
+    padding: 2rem 2.5rem;
+    line-height: 1.8;
+    font-size: 15px;
+  }
+  .festival-block { margin-bottom: 3rem; }
+  .festival-block:last-child { margin-bottom: 0; }
+  .divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 2.5rem 0;
+  }
+  .festival-header {
+    border-left: 3px solid var(--wine);
+    padding-left: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  .festival-date {
+    font-size: 12px;
+    color: var(--gold);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-weight: 500;
+    margin-bottom: 4px;
+  }
+  .festival-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--wine);
+    margin: 0 0 4px;
+    line-height: 1.3;
+  }
+  .festival-subtitle {
+    font-size: 13px;
+    color: var(--gold);
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    margin: 0;
+  }
+  .festival-body p {
+    margin: 0 0 1rem;
+  }
+  .festival-body p:last-child { margin-bottom: 0; }
+  .meta-row {
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 0.5px solid var(--border);
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 13px;
+    color: var(--ink);
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .meta-row span { color: var(--wine); font-weight: 500; }
+  .copy-btn {
+    margin-top: 1rem;
+    background: transparent;
+    border: 0.5px solid var(--wine);
+    color: var(--wine);
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 12px;
+    padding: 6px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    letter-spacing: 0.05em;
+  }
+  .copy-btn:hover { background: rgba(139,26,26,0.06); }
+</style>
+
+<div class="wrapper">
+  <div class="festival-block">
+    <div class="festival-header">
+      <div class="festival-date">01 de Maio</div>
+      <h2 class="festival-title">Afrodisia en Sekhen</h2>
+      <p class="festival-subtitle">Cores: Rosa e Dourado / Verde e Dourado &nbsp;·&nbsp; Temática: O Amor como Força Sagrada</p>
+    </div>
+    <div class="festival-body">
+      <p>Com o Sol em Touro — signo que abriga Vênus em seu domicílio — celebramos o amor não como emoção passageira, mas como princípio cosmológico. O amor que cria, que une, que sustenta. Este é o festival da força que move deuses e mortais, da atração que não é apenas desejo, mas ordenação do mundo.</p>
+
+      <p>Da tradição helênica, a Afrodisia honra Afrodite em sua plenitude — não apenas a deusa da beleza superficial, mas a potência erótica que está na raiz de toda criação. É ela quem faz os mundos se inclinarem uns para os outros. Celebramos também a Gamelia, festa do casamento sagrado de Zeus e Hera, que nos lembra que o amor maduro é também aliança, comprometimento e construção conjunta. O amor que perdura não é apenas chama — é também estrutura.</p>
+
+      <p>Da tradição kemética, o Hab Nefer en Sekhen — a Festa Bela da União — celebra o casamento de Hórus e Hathor, que acontecia no Egito antigo em procissão sagrada, com a barca de Hathor saindo de Dendera em direção a Edfu para encontrar seu consorte. Este é o amor que completa o ciclo mítico iniciado na Thesmophoria Isidis: Ísis que protegeu e criou Hórus, e agora Hórus adulto que se une à Hathor, completando o arco da geração à maturidade e à plenitude. Hathor aqui não é a deusa da fúria ou da embriaguez — é a deusa da alegria plena, da música, da beleza compartilhada.</p>
+
+      <p>Este não é um festival de contemplação silenciosa. É festa. Música, dança, adornos, oferendas de flores e vinho, trocas de afeto entre os membros do coven. Celebramos os amores que nos sustentam — românticos ou não — e honramos as divindades que presidem as uniões que nos formam.</p>
+    </div>
+    <div class="meta-row">
+      <div><span>Divindades:</span> Afrodite, Hórus, Hathor, Zeus, Hera</div>
+      <div><span>Cores:</span> Rosa e Dourado / Verde e Dourado</div>
+      <div><span>Temática principal:</span> O Amor como Força Sagrada e Cosmológica</div>
+    </div>
+    <button class="copy-btn" onclick="
+      const text = document.querySelectorAll('.festival-block')[0].querySelector('.festival-body').innerText;
+      navigator.clipboard.writeText(text).then(()=>{ this.textContent='Copiado!'; setTimeout(()=>{ this.textContent='Copiar texto'; },2000); });
+    ">Copiar texto</button>
+  </div>
+
+  <hr class="divider">
+
+  <div class="festival-block">
+    <div class="festival-header">
+      <div class="festival-date">21 de Junho — Solstício de Inverno</div>
+      <h2 class="festival-title">Festa dos Olhos de Rá e Hyperboreaia</h2>
+      <p class="festival-subtitle">Cores: Prateado e Branco / Azul e Prata &nbsp;·&nbsp; Temática: Recolhimento, Escuridão Fértil e Confiança no Retorno</p>
+    </div>
+    <div class="festival-body">
+      <p>O solstício de inverno é o dia mais curto do ano — o ápice da escuridão, o momento em que a luz chegou ao seu ponto mais distante. Não é um festival de catarse ou de emoções tempestuosas. É o festival do silêncio antes do retorno. Da confiança de que o que se retirou voltará.</p>
+
+      <p>Da tradição kemética, a Festa dos Olhos de Rá nos recorda que o Sol não está ausente por abandono, mas por movimento necessário. Os olhos de Rá — Hathor, Bastet, Sekhmet — são as guardiãs que permanecem quando o deus solar se afasta. Elas veiculam a presença divina no tempo de recolhimento. Neste festival, porém, não trabalhamos o aspecto feroz de Sekhmet nem o êxtase de Hathor — honramos o aspecto sereno e vigilante, o olho que observa no escuro.</p>
+
+      <p>Da tradição helênica, a Hyperboreaia celebra o mito de Apolo nas terras hiperbóreas. Segundo a tradição grega, Apolo deixa Delfos no inverno e parte para um povo abençoado que vive além do vento norte, onde o sol brilha sempre — e enquanto está ausente, é Ártemis quem governa o tempo da escuridão. A lua não é apenas a ausência do sol: ela é a doadora de vida por direito próprio. Na astrologia tradicional, o Sol e a Lua são os dois doadores de vida — Câncer, domicílio lunar, rege justamente o auge do inverno no hemisfério sul, o momento em que a Lua assume a regência do ciclo. Ártemis não busca Apolo: ela sustenta o mundo enquanto ele se recolhe. Ela é a guardiã da vida no tempo em que a vida parece suspensa.</p>
+
+      <p>Este é um festival de introspecção e de fé — não fé cega, mas a fé do jardineiro que sabe que o bulbo enterrado no inverno brotará na primavera. Celebramos o que persiste no escuro: nossos ritmos internos, nossa capacidade de sustentar a vida mesmo sem luz plena. É um momento para honrar o que em nós é lunar — a intuição, o sonho, o cuidado silencioso.</p>
+    </div>
+    <div class="meta-row">
+      <div><span>Divindades:</span> Hathor (aspecto sereno), Bastet, Ártemis, Apolo (em ausência)</div>
+      <div><span>Cores:</span> Prateado e Branco / Azul e Prata</div>
+      <div><span>Temática principal:</span> Recolhimento, Escuridão Fértil e Confiança no Retorno</div>
+    </div>
+    <button class="copy-btn" onclick="
+      const text = document.querySelectorAll('.festival-block')[1].querySelector('.festival-body').innerText;
+      navigator.clipboard.writeText(text).then(()=>{ this.textContent='Copiado!'; setTimeout(()=>{ this.textContent='Copiar texto'; },2000); });
+    ">Copiar texto</button>
+  </div>
+</div>
